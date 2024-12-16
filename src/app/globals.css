@@ -1,0 +1,824 @@
+@import "bootstrap/dist/css/bootstrap.min.css";
+/* Color Variables */
+:root {
+  --primary-color: #4a90e2; /* Primary blue */
+  --secondary-color: #f5a623; /* Accent orange */
+  --background-color: #f9f9ff; /* Light gray background */
+  --text-color: #0000; /* Dark gray text */
+  --muted-color: #9f9f9f; /* Muted gray */
+  --muted-light-color: #d7d5d5; /* Muted gray */
+  --selection-color: #fcb3bf;
+  --icon-color: #ae98dc;
+}
+/* styles/globals.css */
+@font-face {
+  font-family: "CustomFont";
+  src: url("./fonts/DMSans-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Global Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Global Styles */
+body {
+  font-family: "CustomFont", sans-serif;
+  background-color: var(--background-color);
+  line-height: 1.6;
+  position: relative;
+  overflow-x: hidden;
+}
+
+::selection {
+  background-color: var(--selection-color);
+}
+
+.hero-section {
+  height: calc(100vh - 10vh); /* Height minus 10% of viewport height */
+}
+
+.video-section {
+  position: relative; /* Keep it relative for layout */
+  overflow: hidden;
+  height: 100vh; /* Full viewport height */
+  transition: padding 0.3s ease; /* Smooth transition for padding change */
+}
+
+.video-background {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Cover the whole section */
+}
+
+/* For WebKit browsers (Chrome, Safari, newer Edge) */
+::-webkit-scrollbar {
+  width: 12px; /* Width of the scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Background of the scrollbar track */
+  border-radius: 20px; /* Rounded corners */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888; /* Color of the scrollbar thumb */
+  border-radius: 29px; /* Rounded corners */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Color when hovered */
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: thin; /* Makes the scrollbar thinner */
+  scrollbar-color: #888 #f1f1f1; /* thumb color and track color */
+}
+
+.divider {
+  width: 30px; /* Width of the line */
+  height: 2px; /* Adjust height as needed */
+  background-color: black; /* Color of the line */
+  margin: 0 10px; /* Spacing around the line */
+}
+
+.slider-counter {
+  transition: opacity 0.5s ease-in-out; /* Transition for fade effect */
+}
+
+.fade-out {
+  opacity: 0; /* Start with 0 opacity */
+}
+
+.fade-in {
+  opacity: 1; /* End with 1 opacity */
+}
+
+.card-title {
+  font-weight: 600;
+  line-height: 18px;
+
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  overflow: hidden;
+}
+
+.card-subtitle {
+  font-size: 14px;
+  color: var(--muted-color);
+}
+
+.btn-sm {
+  border-radius: 0;
+}
+
+.custom-input,
+.custom-textarea {
+/* Background color */
+  color: black; /* Text color */
+   /* No border */
+  /* border-bottom: 1px solid rgba(255, 255, 255, 0.5); Bottom border */
+  outline: none; /* Remove default outline */
+  transition: border-color 0.3s, box-shadow 0.3s; /* Transition for focus effects */
+}
+
+/* .custom-input::placeholder,
+.custom-textarea::placeholder {
+  color: rgba(255, 255, 255, 0.5); 
+} */
+
+/* Focus styles */
+.custom-input:focus,
+.custom-textarea:focus {
+  border-bottom: 1px solid black; /* Change bottom border color on focus */
+  box-shadow: 0 0 5px black; /* White glow effect on focus */
+  background-color: transparent;
+  /* color: black; */
+}
+
+/* Optional: Style the textarea to match the inputs */
+.custom-textarea {
+  min-height: 100px; /* Set a minimum height for the textarea */
+  resize: none; /* Prevent resizing */
+  border-radius: 0; /* Optional: remove rounding */
+}
+
+.btn-outline-dark {
+  background-color: transparent;
+  padding: 5px 10px;
+  border: 1px soild white;
+  color: white;
+}
+
+
+
+.display-7{
+  font-size: 1.8rem;
+  font-weight: 300;
+}
+@media (min-width: 768px) {
+  .border-right {
+    border-right: 2px solid var(--muted-light-color);
+  }
+}
+
+.accordion {
+  color: initial;                  /* Resets the text color */
+  background-color: initial;      /* Resets the background color */
+  transition: none;                /* Removes transition effects */
+  border-color: initial;           /* Resets the border color */
+  border-width: initial;           /* Resets the border width */
+  border-radius: initial;          /* Resets the border radius */
+  box-shadow: none;                /* Removes box shadow */
+}
+
+.accordion-item {
+  border: none;                    /* Removes borders from items */
+}
+
+.accordion-header {
+  padding: 0;                     /* Resets padding */
+  background-color: transparent;      /* Resets background color */
+}
+
+.accordion-header:focus,
+.accordion-header.active {
+  color: initial;                 /* Resets text color for active state */
+  background-color: transparent;      /* Resets background color for active state */
+  border-color: initial;          /* Resets border color for active state */
+}
+
+.accordion-body {
+  padding: 0;                     /* Resets padding */
+}
+
+.accordion-body.active {
+  color: initial;                 /* Resets text color for active body */
+  background-color: initial;      /* Resets background color for active body */
+}
+
+
+.accordion-button{
+  background-color: var(--background-color);
+}
+.accordion-button:not(.collapsed) {
+  color: var(--bs-accordion-active-color);
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.accordion-body{
+  background-color: transparent;
+}
+
+.accordion-button{
+  padding-left: 0;
+  background-color: transparent;
+}
+
+.accordion-button:focus{
+  box-shadow:none
+}
+
+
+.custome-line-height{
+  line-height: 1.7;
+}
+
+
+
+.custom-input2:focus {
+  border-color: pink; /* Darker pink on focus */
+  box-shadow: 0 0 0 0.2rem rgba(232, 172, 203, 0.25); /* Light pink shadow */
+}
+
+.accordion-button:focus{
+  box-shadow: none;
+}
+
+.custome-line-height{
+  line-height: 1.7;
+}
+
+.p-font-size{
+  font-size: 15px;
+}
+
+.custom-nav-link::before{
+  content: "" !important;
+}
+
+.custom-button-accordion>button{
+  font-size: 50px;
+}
+
+.p-hyphen{
+    text-align: justify;
+    margin: 0; /* Removes default margin */
+    line-height: 1.6; /* Adjust line height for readability */
+    /* hyphens: auto;  */
+}
+
+.hover-opacity {
+  transition: opacity 0.3s ease;
+}
+
+.hover-opacity:hover {
+  opacity: 0; /* Hide image on hover */
+}
+
+.hover-bg-scroll {
+  background-position: top;
+  background-size: cover;
+  transition: background-position 0.5s ease;
+}
+
+.hover-bg-scroll:hover {
+  animation: scrollBg 18s ease forwards; /* Trigger scroll animation */
+}
+
+@keyframes scrollBg {
+  from {
+      background-position: top;
+  }
+  to {
+      background-position: bottom;
+  }
+}
+
+.animated-div {
+  animation: moveUpDown 1s infinite ease-in-out;
+  z-index: 1;
+  position: absolute;
+  top: 40%;
+  left: 45%;
+}
+
+@keyframes moveUpDown {
+  0%, 100% {
+    transform: translateY(0); /* No need for !important */
+  }
+  50% {
+    transform: translateY(-20px); /* Adjust the distance if 100px is too large */
+  }
+}
+
+
+
+.btn-hover:hover{
+  background-color: transparent;
+  color:white;
+ 
+} 
+
+/* Custom button styles */
+.custom-btn {
+  border: 2px solid #d4d4d4; /* Blue border color */
+  background-color: transparent; /* Transparent background */
+  color: #1d1d1e; /* Text color */
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+  text-align: center;
+  border-radius: 8px; /* Rounded corners */
+  transition: all 0.3s ease;
+}
+
+.custom-btn:hover{
+  border: 2px solid #d4d4d4; /* Blue border color */
+  background-color: transparent; /* Transparent background */
+  color: #1d1d1e; /* Text color */
+}
+
+
+
+/* Ensuring icons and text align properly */
+.custom-btn img {
+  width: 30px;
+  margin-right: 8px;
+}
+
+.custom-btn .btn {
+  padding: 8px 16px;
+}
+
+
+
+/*Orb*/
+
+.custom-orb {
+  position: absolute;
+  background: linear-gradient(
+    to top,
+    rgba(0, 206, 209, 0.8),
+    rgba(135, 206, 235, 0.5),
+    rgba(255, 105, 180, 1)
+  );
+  border-radius: 50%;
+  height: 40vh;
+  width: 60vh;
+  filter: blur(130px);
+  z-index: -10;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s ease-out;
+}
+
+
+/*Tabs*/
+.clients-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.client-card {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+/* Individual border styles */
+.border-right-grid {
+  border-right: 1px solid #fff;
+}
+
+.border-bottom {
+  border-bottom: 1px solid #fff;
+}
+
+.border-left {
+  border-left: 1px solid #fff;
+}
+
+.card {
+  height: 100%;
+  background-color: #000;
+  color: #fff;
+}
+
+.clients__logo {
+  max-width: 100%;
+}
+
+.btn-tab:hover{
+  color: #fff !important
+}
+
+
+.list-group-item {
+  transition: background-color 0.2s ease;
+}
+.list-group-item:hover {
+  background-color: #f0f0f0;
+}
+
+/* Position each span element around the circumference of the circle */
+
+/* Custom button styles */
+.custom-btn {
+  border: 2px solid #d4d4d4; /* Blue border color */
+  background-color: transparent; /* Transparent background */
+  color: #1d1d1e; /* Text color */
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+  text-align: center;
+  border-radius: 8px; /* Rounded corners */
+  transition: all 0.3s ease;
+}
+
+.custom-btn:hover{
+  border: 2px solid #d4d4d4; /* Blue border color */
+  background-color: transparent; /* Transparent background */
+  color: #1d1d1e; /* Text color */
+}
+
+
+
+/* Ensuring icons and text align properly */
+.custom-btn img {
+  width: 30px;
+  margin-right: 8px;
+}
+
+.custom-btn .btn {
+  padding: 8px 16px;
+}
+/* Keyframes for the rotation animation */
+
+
+/* Keyframes for infinite rotation */
+@keyframes rotateWheel {
+  0% {
+    transform: rotate(0deg); /* Initial position */
+  }
+  100% {
+    transform: rotate(360deg); /* Final position */
+  }
+}
+
+/* Apply the rotation animation to the wheel */
+.wheel {
+  animation: rotateWheel 10s linear infinite; /* 10s for one full rotation, linear for smooth rotation */
+  display: flex; /* Flex to center the text */
+  justify-content: center; /* Center the circular text */
+  align-items: center; /* Center the circular text */
+}
+
+.number-circle{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 120px;
+  width: 120px;
+}
+
+
+
+
+/* CustomCursor.css */
+
+/* Hide the default cursor */
+.theme-modal {
+  cursor: pointer;
+}
+
+
+.modal-body>form>div>input{
+  cursor: pointer;
+}
+
+.btn-close{
+  cursor: pointer;
+
+}
+
+.button__icons {
+  background-color: white; /* Default background color */
+  transition: background-color 0.3s ease; /* Smooth transition on hover */
+}
+
+/* When hovering over the parent button, change the background of the child element */
+.btn:hover .button__icons {
+  background-color: #daaa43; /* Change to any color you want on hover */
+}
+
+
+
+.sticky-elements-phone {
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse; /* Reverse the order of icon and text */
+}
+
+.position-fixed {
+  right: 0; /* Positioning to the right side */
+  top: 50%; /* Center vertically */
+  transform: translateY(-50%); /* Align to center */
+}
+
+.social-icon-container {
+  background-color: #000;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.social-icon {
+  color: #fff;
+  font-size: 1.2rem;
+}
+
+.social-text-container {
+  background-color: #000;
+  color: #fff;
+  padding: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  height: 100%;
+  max-width: 0;
+  transition: max-width 0.3s ease, padding 0.3s ease;
+  direction: rtl; /* RTL for text expanding towards left */
+}
+
+.sticky-elements-phone:hover .social-text-container {
+  max-width: 80px; /* Adjust width to fit the text */
+  padding: 8px;
+}
+
+.social-link-phone {
+  color: #fff;
+  text-decoration: none;
+}
+
+
+
+
+/* Ensure the image container has hidden overflow and no extra margin/padding */
+.image-container {
+  overflow: hidden; /* Hide any overflow when the image scales */
+  position: relative; /* So the child image can be scaled */
+  margin: 0; /* Remove margin */
+  padding: 0; /* Remove padding */
+}
+
+/* Add blackish gradient effect at the bottom with more opacity at the bottom */
+.image-container::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 30%; /* Adjust height as per requirement */
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7)); /* Gradient from transparent to blackish */
+  transition: all 0.3s ease;
+  opacity: 0; /* Initially hidden */
+  pointer-events: none; /* Ensure it doesn't interfere with clicks */
+}
+
+/* Style for images with hover effect */
+.image-hover {
+  transition: transform 0.3s ease; /* Smooth scaling transition */
+  display: block; /* Ensure the image is displayed as a block */
+  width: 100%; /* Make sure the image takes up full width of the container */
+  height: 100%; /* Ensure the image takes the full height of the container */
+}
+
+/* On hover, scale the image */
+.image-hover:hover {
+  transform: scale(1.1); /* Scale the image by 10% */
+}
+
+/* On hover, make the blackish gradient visible */
+.image-container:hover::after {
+  opacity: 1; /* Show the gradient effect */
+}
+
+
+/* Add styles for the text overlay */
+.text-overlay {
+  position: absolute;
+  bottom: 0; /* Position the text at the bottom of the image */
+  left: 0;
+  width: 100%; /* Make it span the full width of the image */
+  padding: 10px; /* Add some padding to make it readable */
+  
+  color: white; /* Text color */
+  border-radius: 0 0 10px 10px; /* Rounded bottom corners */
+}
+
+.text-overlay h5 {
+  font-size: 1.2rem; /* Adjust title size */
+  margin: 0;
+}
+
+.text-overlay p {
+  font-size: 1rem; /* Adjust description size */
+  margin-top: 5px;
+}
+
+@media screen and (max-width: 768px) {
+  .rotate-text {
+    display: none;
+  }
+}
+
+/* Default state of navbar (visible) */
+.navbar-visible {
+  position: sticky;
+
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 99;
+  background-color: white; /* Optional: ensure it has a background */
+  
+  transition: top 0.3s ease; /* Smooth transition for appearing/disappearing */
+}
+
+/* When the navbar is hidden (scrolling down) */
+.navbar-hidden {
+ 
+
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow for the navbar */
+  top: -80px; /* Adjust the value based on navbar height */
+  transition: top 0.3s ease; /* Smooth transition */
+}
+
+
+@media (max-width: 768px) {
+  .scroll-to-explore {
+    position: absolute; /* Ensure it's positioned absolutely */
+    top: auto;           /* Remove top positioning */
+    left: auto;          /* Remove left positioning */
+    bottom: 10%;         /* 10% from the bottom of the viewport */
+    right: 10%;          /* 10% from the right of the viewport */
+  }
+}
+
+
+/* Full-screen loader overlay */
+.loader-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999; /* Makes sure loader is above the content */
+  transition: transform 0.5s ease, opacity 0.5s ease; /* Transition for animation */
+}
+
+/* Video inside the loader */
+.loader-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* When scrolled, hide the loader */
+.hide-loader {
+  transform: translateY(-100%);  /* Move loader out of the screen */
+  opacity: 0;  /* Fade out the loader */
+}
+
+/* Default state of navbar (visible) */
+.navbar-visible {
+  position: sticky;
+
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 99;
+  background-color: white; /* Optional: ensure it has a background */
+  
+  transition: top 0.3s ease; /* Smooth transition for appearing/disappearing */
+}
+
+/* When the navbar is hidden (scrolling down) */
+.navbar-hidden {
+ 
+
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow for the navbar */
+  top: -80px; /* Adjust the value based on navbar height */
+  transition: top 0.3s ease; /* Smooth transition */
+}
+
+
+@media (max-width: 768px) {
+  .scroll-to-explore {
+    position: absolute; /* Ensure it's positioned absolutely */
+    top: auto;           /* Remove top positioning */
+    left: auto;          /* Remove left positioning */
+    bottom: 10%;         /* 10% from the bottom of the viewport */
+    right: 10%;          /* 10% from the right of the viewport */
+  }
+}
+
+
+/* Full-screen loader overlay */
+.loader-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999; /* Makes sure loader is above the content */
+  transition: transform 0.5s ease, opacity 0.5s ease; /* Transition for animation */
+}
+
+/* Video inside the loader */
+.loader-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* When scrolled, hide the loader */
+.hide-loader {
+  transform: translateY(-100%);  /* Move loader out of the screen */
+  opacity: 0;  /* Fade out the loader */
+}
+
+
+.accordion-header-m{
+  margin-top:-0.3rem !important
+}
+.accordion-body-m{
+  margin-top:-0.35rem !important
+}
+
+@media (min-width: 1000px) {
+  .special_width {
+    flex: 0 0 auto;
+    width: 20%;
+  }
+}
+
+.image-hover:hover {
+  transform: scale(1.1);
+}
+
+.p-header-right{
+  padding-right: 22.5px !important;
+}
+
+.custom-background-tab{
+  background-color: #EFF2F6 !important;
+}
+
+
+.tabs {
+  display: flex;
+  flex-direction: column;
+ 
+}
+.tab-btn {
+  background-color: transparent;
+  border: none;
+  padding: 10px;
+  font-size: 16px;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 100%;
+}
+
+.tab-btn.active {
+  font-weight: bold;
+  color: #007bff;
+  background-color: #EFF2F6;
+}
+
+@media (max-width: 768px) {
+  .video-container {
+    height: 40vh !important; /* Smaller size for mobile */
+    width: 40vh !important;
+    margin-bottom: 1rem;
+    transform: skewY(0deg) !important; /* Remove skew effect */
+  }
+  .text-dark .display-2 {
+    font-size: 1.8rem !important /* Smaller font size for mobile titles */
+  }
+  .col-md-7 {
+    padding-bottom: 1rem !important /* Add spacing for better stacking */
+  }
+}

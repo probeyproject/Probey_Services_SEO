@@ -1,0 +1,106 @@
+/* Basic button styling */
+.btn-animate {
+  position: relative;
+  padding: 8px 5px; /* Reduced padding for a smaller button */
+  background-color: #000000;
+  color: white;
+  border: none;
+  font-size: 13px !important;
+  border-radius: 20px; /* Rounded corners */
+  cursor: pointer;
+  overflow: hidden;
+  width: 100px !important;
+  height: 35px !important;
+  display: flex;
+  justify-content: flex-start; /* Align text to the start (left) */
+  align-items: center; /* Vertically center the content */
+  text-align: start !important;
+  white-space: nowrap; /* Prevent text from wrapping */
+}
+
+/* Font Awesome icon styling */
+.icons {
+  padding: 2px;
+  background-color: white;
+  position: absolute;
+  right: 5%;
+  transition: none; /* Keep the icon static */
+}
+
+/* Text styling */
+.first-text, .second-text {
+  position: absolute;
+  top: 50%; /* Vertically center the text */
+  left: 10%; /* Start the text from the left side of the button */
+  transform: translateY(-50%); /* Adjust text positioning to the vertical center */
+  transition: all 0.3s ease; /* Smooth transition */
+}
+
+.second-text {
+  top: 100%;
+  opacity: 0; /* Initially hidden */
+}
+
+/* Hover effects */
+.btn-animate:hover .first-text {
+  transform: translateY(-500%); /* Move the first text up */
+}
+
+.btn-animate:hover .second-text {
+  top: 50%; /* Bring the second text to the center */
+  transform: translateY(-50%); /* Ensure vertical centering */
+  opacity: 1; /* Make the second text visible */
+  transition: all 0.3s ease;
+}
+
+
+.btn-animate:hover .icon{
+  transition: all .3;
+  background: #ecc434;
+  -webkit-transition: all .3;
+  -moz-transition: all .3;
+  -ms-transition: all .3;
+  -o-transition: all .3;
+}
+
+
+.btn-animate_submit {
+position: relative;
+padding: 8px 5px; /* Reduced padding for a smaller button */
+background-color: #000000;
+color: white;
+border: none;
+font-size: 13px !important;
+border-radius: 20px; /* Rounded corners */
+cursor: pointer;
+overflow: hidden;
+width: 250px !important;
+height: 35px !important;
+display: flex;
+justify-content: flex-start; /* Align text to the start (left) */
+align-items: center; /* Vertically center the content */
+text-align: start !important;
+white-space: nowrap; /* Prevent text from wrapping */
+}
+
+
+.btn-animate_submit:hover .first-text {
+transform: translateY(-500%); /* Move the first text up */
+}
+
+.btn-animate_submit:hover .second-text {
+top: 50%; /* Bring the second text to the center */
+transform: translateY(-50%); /* Ensure vertical centering */
+opacity: 1; /* Make the second text visible */
+transition: all 0.3s ease;
+}
+
+
+.btn-animate_submit:hover .icon{
+transition: all .3;
+background: #ecc434;
+-webkit-transition: all .3;
+-moz-transition: all .3;
+-ms-transition: all .3;
+-o-transition: all .3;
+}
